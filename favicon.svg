@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- automatizate.tech favicon -->
+  <rect width="512" height="512" rx="112" fill="#FAF9F5"/>
+  <!-- lowercase 'a' with tail flowing right -->
+  <circle cx="210" cy="244" r="98" fill="none" stroke="#181613" stroke-width="60"/>
+  <path d="M 308 146 V 296 Q 308 366 378 366 H 382" fill="none" stroke="#181613" stroke-width="60" stroke-linecap="round"/>
+  <!-- arrowhead in brand terracotta -->
+  <polygon points="376,312 442,366 376,420" fill="#0E7C4A"/>
+</svg>
