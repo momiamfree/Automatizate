@@ -1045,21 +1045,32 @@
   // Conversación del hero: los mensajes aparecen en secuencia.
   // El indicador de escritura se muestra dentro de la propia burbuja
   // (que ya ocupa su espacio final) para que el alto del chat no cambie.
+  // La secuencia arranca cuando el chat entra en pantalla (en móvil queda
+  // por debajo del pliegue; si arrancara al cargar, nadie la vería).
   const msgs = document.querySelectorAll('.msg-animated');
   if (reduceMotion) {
     msgs.forEach(m => m.classList.add('show'));
   } else {
-    let t = 600;
-    msgs.forEach((m) => {
-      if (m.classList.contains('out')) {
-        setTimeout(() => m.classList.add('show', 'typing-state'), t);
-        t += 1100;
-        setTimeout(() => m.classList.remove('typing-state'), t);
-      } else {
-        setTimeout(() => m.classList.add('show'), t);
+    const startChat = () => {
+      let t = 600;
+      msgs.forEach((m) => {
+        if (m.classList.contains('out')) {
+          setTimeout(() => m.classList.add('show', 'typing-state'), t);
+          t += 1100;
+          setTimeout(() => m.classList.remove('typing-state'), t);
+        } else {
+          setTimeout(() => m.classList.add('show'), t);
+        }
+        t += 900;
+      });
+    };
+    const chatObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        chatObserver.disconnect();
+        startChat();
       }
-      t += 900;
-    });
+    }, { threshold: 0.45 });
+    chatObserver.observe(document.querySelector('.chat'));
   }
 
   // Form submit → n8n webhook
