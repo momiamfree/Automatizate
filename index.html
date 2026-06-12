@@ -81,6 +81,44 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Esto sirve para un negocio como el mío?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Si en tu día a día hay tareas que se repiten — responder mensajes, pasar datos de un sitio a otro, enviar recordatorios, hacer facturas — sí. He automatizado desde restaurantes hasta despachos de abogados y procesos de venta B2B, y cada automatización se construye a medida." }
+      },
+      {
+        "@type": "Question",
+        "name": "No entiendo de tecnología. ¿Es un problema?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ninguno. Tú cuentas el problema con tus palabras, yo me encargo de toda la parte técnica y lo entrego funcionando. Sigues usando tus herramientas de siempre, solo que ahora trabajan solas." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tengo que cambiar mis herramientas o programas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Se conecta lo que ya usas: WhatsApp, Google Calendar, Excel, tu CRM, tu programa de facturación. La automatización se adapta a tu negocio, no al revés." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta una automatización?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Depende de lo que necesites: no cuesta lo mismo un recordatorio automático que un asistente completo. El primer paso es un diagnóstico gratuito de 30 minutos, y después se da un precio cerrado antes de empezar, sin sorpresas." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto se tarda en tenerlo funcionando?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La mayoría de automatizaciones están funcionando en días o pocas semanas, no en meses. Se prueban en el negocio real antes de darlas por terminadas." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Y si algo falla cuando ya esté en marcha?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Se entrega probado en producción y con soporte: si algo se rompe o el negocio cambia, se ajusta. El cliente no se queda solo con un sistema que no entiende." }
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -233,6 +271,10 @@
     }
     .hero-sub strong { color: var(--tinta); font-weight: 600; }
     .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .hero-note {
+      font-family: var(--mono); font-size: 12.5px;
+      color: var(--gris-claro); margin-top: 16px;
+    }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--tinta); color: var(--papel);
@@ -434,6 +476,7 @@
     }
 
     /* ─── PROCESO ──────────────────────────────────────────── */
+    #proceso { background: var(--papel-2); border-bottom: 1px solid var(--linea); }
     .steps {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 0;
@@ -468,31 +511,60 @@
       font-family: var(--mono); font-size: 12px; color: var(--gris-claro);
     }
 
-    /* ─── SERVICIOS ────────────────────────────────────────── */
-    #servicios { background: var(--papel-2); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+    /* ─── IDEAS / CHIPS ────────────────────────────────────── */
+    .ideas { margin-top: 56px; }
+    .ideas-title {
+      font-family: var(--mono); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.08em; color: var(--verde);
+      margin-bottom: 18px;
     }
-    .service-card {
-      background: var(--papel);
-      border: 1px solid var(--linea);
-      border-radius: 16px;
-      padding: 32px;
-      transition: border-color 0.2s, background 0.2s;
+    .chips {
+      list-style: none;
+      display: flex; flex-wrap: wrap; gap: 10px;
     }
-    .service-card:hover { border-color: var(--verde); background: #fff; }
-    .service-icon {
-      width: 44px; height: 44px; border-radius: 11px;
-      background: var(--tinta); color: var(--verde-vivo);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
+    .chips li {
+      font-size: 14px; color: var(--tinta);
+      background: #fff; border: 1px solid var(--linea);
+      padding: 7px 16px; border-radius: 999px;
     }
-    .service-icon svg { width: 21px; height: 21px; }
-    .service-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 9px; letter-spacing: -0.01em; }
-    .service-card p { font-size: 14.5px; color: var(--gris); line-height: 1.65; }
+    .chips-note {
+      margin-top: 22px;
+      font-size: 15px; color: var(--gris); max-width: 560px;
+    }
+    .chips-note a {
+      color: var(--verde); font-weight: 600; text-decoration: none;
+      border-bottom: 1px solid currentColor; padding-bottom: 1px;
+    }
+    .chips-note a:hover { color: var(--verde-osc); }
+
+    /* ─── FAQ ──────────────────────────────────────────────── */
+    .faq-list { max-width: 760px; }
+    .faq-list details { border-bottom: 1px solid var(--linea); }
+    .faq-list details:first-of-type { border-top: 1px solid var(--linea); }
+    .faq-list summary {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 4px;
+      font-size: 16.5px; font-weight: 600; letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: '+';
+      font-family: var(--mono); font-size: 20px; font-weight: 400;
+      color: var(--verde); flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::after { transform: rotate(45deg); }
+    .faq-list summary:hover { color: var(--verde); }
+    .faq-list details p {
+      padding: 0 4px 22px;
+      font-size: 15px; color: var(--gris); line-height: 1.7;
+      max-width: 660px;
+    }
 
     /* ─── CONTACTO ─────────────────────────────────────────── */
+    #contacto { background: var(--papel-2); border-top: 1px solid var(--linea); }
     .contact-inner {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 72px; align-items: start;
@@ -603,7 +675,7 @@
       section { padding: 76px 0; }
       #hero { padding: 110px 0 60px; }
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .pain-grid, .services-grid { grid-template-columns: 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 44px; }
       .form-row { grid-template-columns: 1fr; }
       form { padding: 28px 22px; }
@@ -626,15 +698,16 @@
   <div class="container">
     <div class="hero-inner">
       <div>
-        <p class="hero-kicker"><span class="pulse" aria-hidden="true"></span>asistentes IA funcionando en producción</p>
+        <p class="hero-kicker"><span class="pulse" aria-hidden="true"></span>automatizaciones funcionando en producción</p>
         <h1>Automatiza lo que <em>te está frenando<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 Q 50 3, 100 8 T 197 6"/></svg></em></h1>
         <p class="hero-sub">
-          Nada de plantillas genéricas. Analizo <strong>el dolor real de tu negocio</strong> y construyo la automatización exacta que necesitas — con IA que ya está funcionando en negocios reales.
+          ¿Mensajes a deshoras, citas, facturas, informes, seguimiento de clientes? Si una tarea <strong>te roba tiempo cada semana</strong>, construyo la automatización que te la quita de encima. A tu medida, funcionando en días.
         </p>
         <div class="hero-ctas">
-          <a href="#contacto" class="btn-primary">Quiero una automatización →</a>
+          <a href="#contacto" class="btn-primary">Pedir diagnóstico gratis →</a>
           <a href="#casos" class="btn-secondary">Ver casos reales</a>
         </div>
+        <p class="hero-note">30 minutos, sin compromiso y sin tecnicismos. Te respondo en menos de 24h.</p>
       </div>
 
       <div class="chat-wrap">
@@ -655,7 +728,7 @@
             <div class="msg out msg-animated">Hecho ✅ Mesa para 4, sábado 21:00, a nombre de Marta. Te acabo de enviar la confirmación. ¡Hasta el sábado!<span class="hora">23:48</span></div>
           </div>
         </div>
-        <p class="chat-caption">Reserva real gestionada a las 23:47, sin nadie detrás.<br><a href="https://youtube.com/shorts/bfezWOHWf0s" target="_blank" rel="noopener">Ver el asistente en vídeo (30 s) →</a></p>
+        <p class="chat-caption">Una reserva entrando a las 23:47, sin nadie detrás — y los asistentes son solo una de las automatizaciones que construyo.<br><a href="https://youtube.com/shorts/bfezWOHWf0s" target="_blank" rel="noopener">Ver el asistente en vídeo (30 s) →</a></p>
       </div>
     </div>
   </div>
@@ -707,6 +780,46 @@
           <p>CRM, email, calendario, WhatsApp, facturación… todo por separado. Cada cambio hay que hacerlo en cuatro sitios a la vez.</p>
         </div>
       </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        </div>
+        <div>
+          <h3>El papeleo se come tus tardes</h3>
+          <p>Presupuestos, facturas, recordatorios de pago, contratos. Trabajo necesario que no te trae ni un cliente nuevo — y que se puede hacer solo.</p>
+        </div>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8" rx="1"/><rect x="11" y="7" width="3" height="13" rx="1"/><rect x="16" y="10" width="3" height="10" rx="1"/></svg>
+        </div>
+        <div>
+          <h3>Los números del negocio, a mano y a final de mes</h3>
+          <p>Ventas, reservas, gastos… repartidos en mil sitios. Para saber cómo vas, toca perder una tarde con el Excel.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ideas fade-up">
+      <p class="ideas-title">todo esto se puede automatizar</p>
+      <ul class="chips">
+        <li>reservas y citas 24/7</li>
+        <li>recordatorios que evitan plantones</li>
+        <li>facturas que se generan solas</li>
+        <li>seguimiento de presupuestos enviados</li>
+        <li>avisos de pagos pendientes</li>
+        <li>informes semanales automáticos</li>
+        <li>respuestas a reseñas de Google</li>
+        <li>publicaciones en redes programadas</li>
+        <li>bienvenida automática a clientes nuevos</li>
+        <li>stock que avisa antes de agotarse</li>
+        <li>emails de seguimiento a leads</li>
+        <li>datos pasados a tu CRM sin copiar nada</li>
+        <li>documentos generados desde plantillas</li>
+        <li>encuestas post-venta automáticas</li>
+        <li>avisos internos cuando algo importante pasa</li>
+      </ul>
+      <p class="chips-note">Hostelería, despachos, clínicas, comercios, gestorías… ¿Lo tuyo no está? Si ocurre en un ordenador o en un móvil, casi seguro que se puede automatizar. <a href="#contacto">Pregúntame, es gratis →</a></p>
     </div>
   </div>
 </section>
@@ -717,7 +830,7 @@
     <div class="section-header fade-up">
       <p class="eyebrow">casos reales</p>
       <h2 class="section-title">Ya está funcionando.<br>En producción.</h2>
-      <p class="section-sub">No son demos ni pruebas de concepto. Son automatizaciones activas resolviendo problemas reales hoy mismo.</p>
+      <p class="section-sub">No son demos ni pruebas de concepto. Son automatizaciones activas resolviendo problemas reales hoy mismo — y cada una distinta, porque cada negocio lo es.</p>
     </div>
 
     <div class="cases-grid">
@@ -773,7 +886,7 @@
       <div class="step">
         <p class="step-num">paso 01</p>
         <h3>Diagnóstico</h3>
-        <p>Hablamos 30 minutos. Me cuentas qué tareas te roban tiempo o qué oportunidades estás perdiendo. Sin compromiso.</p>
+        <p>Hablamos 30 minutos. Me cuentas qué te roba tiempo y te digo qué se puede automatizar, cómo y qué ganarías con ello. Sin compromiso y sin tecnicismos.</p>
         <p class="step-dur">30 min · gratis</p>
       </div>
       <div class="step">
@@ -792,44 +905,39 @@
   </div>
 </section>
 
-<!-- ── SERVICIOS ──────────────────────────────────────────────────── -->
-<section id="servicios">
+<!-- ── FAQ ────────────────────────────────────────────────────────── -->
+<section id="faq">
   <div class="container">
     <div class="section-header fade-up">
-      <p class="eyebrow">servicios</p>
-      <h2 class="section-title">¿Qué puedo automatizar para ti?</h2>
-      <p class="section-sub">Automatizaciones para negocios de cualquier sector: hostelería, despachos, clínicas, comercios. Si una tarea se repite, se puede automatizar.</p>
+      <p class="eyebrow">dudas frecuentes</p>
+      <h2 class="section-title">Lo que me preguntan<br>antes de empezar</h2>
     </div>
 
-    <div class="services-grid">
-      <div class="service-card fade-up">
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.35 8.5 8.5 0 0 1-3.4-.65L3 21l1.8-5.6A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 1 1 17 0z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg>
-        </div>
-        <h3>Asistente con IA</h3>
-        <p>Asistentes que atienden a tus clientes 24/7 por WhatsApp, Telegram o tu web. Reservas, consultas, soporte — sin que tengas que estar tú.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3>Automatización de procesos</h3>
-        <p>Elimina tareas manuales repetitivas. Conecta tus herramientas para que la información fluya sola sin copiar y pegar entre sistemas.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
-        </div>
-        <h3>Captación de leads</h3>
-        <p>Flujos automáticos de prospección y seguimiento. Desde la captación hasta el primer contacto, sin intervención manual.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
-        </div>
-        <h3>Integraciones entre sistemas</h3>
-        <p>¿Tienes herramientas que no se hablan? Las conecto. CRM, email, calendario, facturación, WhatsApp — todo sincronizado.</p>
-      </div>
+    <div class="faq-list fade-up">
+      <details>
+        <summary>¿Esto sirve para un negocio como el mío?</summary>
+        <p>Si en tu día a día hay tareas que se repiten — responder mensajes, pasar datos de un sitio a otro, enviar recordatorios, hacer facturas — sí. He automatizado desde restaurantes hasta despachos de abogados y procesos de venta B2B, y cada automatización se construye a medida de cómo trabajas tú.</p>
+      </details>
+      <details>
+        <summary>No entiendo de tecnología. ¿Es un problema?</summary>
+        <p>Ninguno. Tú me cuentas el problema con tus palabras, yo me encargo de toda la parte técnica y te lo entrego funcionando. Sigues usando tus herramientas de siempre, solo que ahora trabajan solas.</p>
+      </details>
+      <details>
+        <summary>¿Tengo que cambiar mis herramientas o programas?</summary>
+        <p>No. Conecto lo que ya usas: WhatsApp, Google Calendar, Excel, tu CRM, tu programa de facturación. La automatización se adapta a tu negocio, no al revés.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta una automatización?</summary>
+        <p>Depende de lo que necesites: no cuesta lo mismo un recordatorio automático que un asistente completo. Por eso el primer paso es un diagnóstico gratuito de 30 minutos — después te doy un precio cerrado antes de empezar, sin sorpresas.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto se tarda en tenerlo funcionando?</summary>
+        <p>La mayoría de automatizaciones están funcionando en días o pocas semanas, no en meses. Y lo ves funcionar en tu negocio real antes de darlo por terminado.</p>
+      </details>
+      <details>
+        <summary>¿Y si algo falla cuando ya esté en marcha?</summary>
+        <p>Te lo entrego probado en producción y con soporte: si algo se rompe o tu negocio cambia, lo ajusto yo. No te quedas solo con un sistema que no entiendes.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -885,7 +993,7 @@
               <textarea id="problema" name="problema" placeholder="Cuéntame qué tarea te roba tiempo, qué proceso es un caos o qué oportunidad estás perdiendo…" required></textarea>
             </div>
             <button type="submit" class="btn-form" id="submit-btn">
-              Enviar mensaje →
+              Pedir mi diagnóstico gratis →
             </button>
             <p class="form-note">Sin spam. Solo te contactaré para hablar de tu proyecto.</p>
           </div>
